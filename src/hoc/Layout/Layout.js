@@ -1,17 +1,14 @@
-import React, {Component} from 'react'
+import React from 'react'
 import classes from './Layout.module.scss'
 
-class Layout extends Component {
-    render() {
+const Layout = props =>  {
         return(
             <div className={classes.Layout}>
-
                 <main>
-                    {this.props.children}
+                    {props.children}
                 </main>
             </div>
         )
-    }
 }
 
 export default Layout
