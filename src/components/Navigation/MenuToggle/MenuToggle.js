@@ -18,7 +18,6 @@ const MenuToggle = props => {
 			className={cls.join(' ')}
 			onClick={props.onToggle}
 		>
-
 		</i>
 	)
 }
