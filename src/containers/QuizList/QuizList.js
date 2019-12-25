@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from "./QuizList.module.scss";
+import classes from "./QuizList.module.css";
 import { NavLink } from 'react-router-dom';
 
 
