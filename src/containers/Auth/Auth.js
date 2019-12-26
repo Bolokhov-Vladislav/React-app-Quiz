@@ -6,6 +6,7 @@ import is from 'is_js'
 export default class Auth extends Component {
 
     state = {
+        isFormValid: false,
         formControls: {
             email: {
                 value: '',
@@ -23,7 +24,7 @@ export default class Auth extends Component {
                 value: '',
                 type: 'password',
                 label: 'Пароль',
-                errorMessage: 'Введите корректный пароль',
+                errorMessage: 'Минимальное количество символов 6',
                 valid: false,
                 touched: false,
                 validation: {
@@ -35,7 +36,7 @@ export default class Auth extends Component {
     }
 
     _login = () => {
-
+        console.log('da');
     }
     _register = () => {
 
@@ -51,7 +52,7 @@ export default class Auth extends Component {
         let isValid = true
 
         if (validation.required) {
-            isValid = value.trim() !== '' && isValid
+            isValid = value.trim() !== ''
         }
         if (validation.email) {
             isValid = is.email(value) && isValid
@@ -73,10 +74,18 @@ export default class Auth extends Component {
 
         formControls[controlName] = control
 
+        let isFormValid = true
+
+        Object.keys(formControls).forEach(name => {
+            isFormValid = formControls[name].valid && isFormValid
+        })
+
         this.setState({
-            formControls
+            formControls: formControls,
+            isformValid: isFormValid
         })
     }
+    
 
     _rendetInputs() {
         const inputs = Object.keys(this.state.formControls).map((controlName, index) => {
@@ -107,8 +116,16 @@ export default class Auth extends Component {
                     <form onSubmit={this._submit} className={classes.AuthForm}>
                         {this._rendetInputs()}
 
-                        <Button type='success' onClick={this._login}>Войти</Button>
-                        <Button type='primary' onClick={this._register}>Регистрация</Button>
+                        <Button 
+                            type='success' 
+                            onClick={this._login} 
+                            disabled={!this.state.isformValid}
+                        >Войти</Button>
+                        <Button 
+                            type='primary' 
+                            onClick={this._register}
+                            disabled={!this.state.isformValid}
+                        >Регистрация</Button>
                     </form>
                 </div>
             </div>
