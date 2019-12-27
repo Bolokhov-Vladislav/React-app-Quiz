@@ -26,3 +26,7 @@
   background: #2884f6;
   color: #fff;
 }
+.Button[disabled] {
+  background: rgb(156, 151, 151);
+  color: #000;
+}
