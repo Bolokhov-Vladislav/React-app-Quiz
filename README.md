@@ -2,8 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-You mast run:
-npm i yarn
+You mast run: npm i yarn, 
 yarn add is_js
 
 
