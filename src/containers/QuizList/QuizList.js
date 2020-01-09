@@ -16,6 +16,7 @@ class QuizList extends Component {
             )
         })
     }
+
     
     render() {
         return (
